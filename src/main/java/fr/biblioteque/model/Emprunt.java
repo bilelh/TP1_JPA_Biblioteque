@@ -22,27 +22,28 @@ import org.hibernate.annotations.Type;
 public class Emprunt {
 	
 	@Id
-	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	
 	@Column(name = "DATE_DEBUT",  nullable = false, unique = false)
-	@Type(type="date")
+	//@Type(type="date")
 	private LocalDate dateDebut ;
 	
 	@Column(name = "DATE_FIN", nullable = true, unique = false)
-	@Type(type="date")
+	//@Type(type="date")
 	private LocalDate dateFin ;
 	
 	@Column(name = "DELAI",  nullable = false, unique = false)
 	private int delai ;
 	
 	@Column(name = "ID_CLIENT",  nullable = false, unique = false)
-	@ManyToOne
 	private int idClient ;
-	
+	 /*
 	@OneToMany(mappedBy="emprunt")
-	private Set<Client> client;
+	private Set<Client> client; */
+	@ManyToOne
+	@JoinColumn(name="ID")
+	private Client client;
 	
 	
 	@ManyToMany

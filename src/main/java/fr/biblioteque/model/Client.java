@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class Client {
 	
 	@Id
-	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	
@@ -29,10 +28,13 @@ public class Client {
 	
 	@OneToMany(mappedBy="client")
 	private Set<Livre> livre;
-	
+	/*
 	@ManyToOne
 	@JoinColumn(name="ID_CLIENT")
-	private Emprunt emprunt;
+	private Emprunt emprunt;*/
+	/*
+	@OneToMany(mappedBy="client")
+	private Set<Emprunt> emprunt; */
 	
 	// *****GETTER ET SETTER *****//
 	public int getId() {
