@@ -19,7 +19,7 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
-	
+
 	@Column(name = "NOM", length = 50, nullable = false, unique = false)
 	private String nom ;
 	
@@ -32,10 +32,11 @@ public class Client {
 	@ManyToOne
 	@JoinColumn(name="ID_CLIENT")
 	private Emprunt emprunt;*/
-	/*
-	@OneToMany(mappedBy="client")
-	private Set<Emprunt> emprunt; */
 	
+	@OneToMany(mappedBy="client")
+	private Set<Emprunt> emprunt; 
+	
+
 	// *****GETTER ET SETTER *****//
 	public int getId() {
 		return id ;
@@ -61,5 +62,20 @@ public class Client {
 		this.nom = nom ;
 	}
 	
+	public Set<Livre> getLivre() {
+		return livre;
+	}
+
+	public void setLivre(Set<Livre> livre) {
+		this.livre = livre;
+	}
+	
+	public Set<Emprunt> getEmprunt() {
+		return emprunt;
+	}
+
+	public void setEmprunt(Set<Emprunt> emprunt) {
+		this.emprunt = emprunt;
+	}
 
 }

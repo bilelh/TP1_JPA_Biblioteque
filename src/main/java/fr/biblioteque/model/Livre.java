@@ -11,7 +11,7 @@ public class Livre {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
-	
+
 	@Column(name = "TITRE", length = 255, nullable = false, unique = false)
 	private String titre ;
 	
@@ -49,6 +49,22 @@ public class Livre {
 	
 	public void setAuteur(String auteur) {
 		this.auteur = auteur ;
+	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	public void setEmprunts(Set<Emprunt> emprunts) {
+		this.emprunts = emprunts;
 	}
 	
 }

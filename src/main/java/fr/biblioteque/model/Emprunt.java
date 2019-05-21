@@ -33,6 +33,22 @@ public class Emprunt {
 	//@Type(type="date")
 	private LocalDate dateFin ;
 	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Set<Livre> getLivres() {
+		return livres;
+	}
+
+	public void setLivres(Set<Livre> livres) {
+		this.livres = livres;
+	}
+
 	@Column(name = "DELAI",  nullable = false, unique = false)
 	private int delai ;
 	
