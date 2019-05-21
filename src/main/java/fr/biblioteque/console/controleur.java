@@ -19,7 +19,6 @@ public class controleur {
 		
 		Livre livre =em.find(Livre.class, 2) ; 
 		
-		//Livre li = LivreDao.findLivre(2) ;
 		
 		if (livre != null) {
 			System.out.println("Le livre a ete recupere");
@@ -32,12 +31,8 @@ public class controleur {
 		
 		System.out.println(livre1.getId() + "  " + livre1.getTitre() +"  " +livre1.getAuteur());
 		
-
-		/*
-		TypedQuery<Livre> query2 = em.createQuery("select titre from Livre l where l.titre='Germinal'",
-		Livre.class);
-
-		Livre h2 = query2.getResultList().get(0); */
+		
+		
 		
 		
 	}

@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Livre {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	
 	@Column(name = "TITRE", length = 255, nullable = false, unique = false)
@@ -15,8 +16,7 @@ public class Livre {
 	@Column(name = "AUTEUR", length = 50, nullable = false, unique = false)
 	private String auteur ;
 	
-	
-	
+	// *****GETTER ET SETTER *****//
 	public int getId() {
 		return id ;
 	}
@@ -37,7 +37,7 @@ public class Livre {
 		return auteur ;
 	}
 	
-	public void setAuteur(String Auteur) {
+	public void setAuteur(String auteur) {
 		this.auteur = auteur ;
 	}
 	
