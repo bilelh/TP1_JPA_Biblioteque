@@ -3,15 +3,18 @@ package fr.biblioteque.model;
 import javax.persistence.*;
 
 @Entity
-@Table (name="livre")
+@Table (name="Livre")
 public class Livre {
 	
 	@Id
 	private int id ;
 	
+	@Column(name = "TITRE", length = 255, nullable = false, unique = false)
 	private String titre ;
 	
+	@Column(name = "AUTEUR", length = 50, nullable = false, unique = false)
 	private String auteur ;
+	
 	
 	
 	public int getId() {
