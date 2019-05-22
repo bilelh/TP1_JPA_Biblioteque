@@ -14,7 +14,7 @@ public class Adresse {
 	@Column(name = "RUE", length = 100, nullable = false)
 	private String rue ;
 	
-	@Column(name = "NOM", length = 5, nullable = false)
+	@Column(name = "CODE_POSTALE", length = 5, nullable = false)
 	private int codePostale ;
 	
 	@Column(name = "VILLE", length = 50, nullable = false)
