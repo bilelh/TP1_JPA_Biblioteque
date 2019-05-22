@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import fr.biblioteque.dao.LivreDao;
 import fr.biblioteque.model.Client;
 import fr.biblioteque.model.Emprunt;
 import fr.biblioteque.model.Livre;
