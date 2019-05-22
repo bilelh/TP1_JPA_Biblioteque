@@ -53,21 +53,30 @@ public class controleur {
 		
 		
 		// requete pour recuperer un tous les emprunts d'un client donné
-		Query query3 = em.createQuery("select c from Client c where c.id = 3");
-		Client client  = (Client) query3.getResultList().get(0); 
 		
-		System.out.println("Client :");
-		System.out.println("Id : " + client.getId() + "    nom : " + client.getNom() +"    prenom : " + client.getPrenom());
-		
-		Set <Emprunt> empruntsClient = client.getEmprunt() ;		
-		
-		// Comptage du nombre d'emprunt du client
-		int nbEmprunt = 0 ;
-		for (Emprunt e : empruntsClient) {
-			nbEmprunt++ ;
-			System.out.println("Id emprunt : " + e.getId() + "   debut : " + e.getDateDebut() + "   delai : " + e.getDelai() );
+		try {
+			Query query3 = em.createQuery("select c from Client c where c.id = 1");
+			Client client  = (Client) query3.getResultList().get(0); 
+			
+			System.out.println("Client :");
+			System.out.println("Id : " + client.getId() + "    nom : " + client.getNom() +"    prenom : " + client.getPrenom());
+			
+			Set <Emprunt> empruntsClient = client.getEmprunt() ;
+			
+			// Comptage du nombre d'emprunt du client
+			int nbEmprunt = 0 ;
+			for (Emprunt e : empruntsClient) {
+				nbEmprunt++ ;
+				System.out.println("Id emprunt : " + e.getId() + "   debut : " + e.getDateDebut() + "   delai : " + e.getDelai() );
+			}
+			System.out.println("Ce Client a fait " + nbEmprunt + " emprunt(s)");
+			
+			
+		} catch (IndexOutOfBoundsException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			System.out.println("Ce client n'a pas fait d'emprunt ou n'existe pas");
 		}
-		System.out.println("Ce Client a fait " + nbEmprunt + " emprunt(s)");
 		
 	}
 
