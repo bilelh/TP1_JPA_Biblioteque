@@ -1,18 +1,28 @@
 package fr.banque.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Embeddable
+@Entity
 public class Adresse {
 	
+	@Column(name = "NUMERO", nullable = false)
 	private int numero ;
 	
+	@Column(name = "RUE", length = 100, nullable = false)
 	private String rue ;
 	
+	@Column(name = "NOM", length = 5, nullable = false)
 	private int codePostale ;
 	
+	@Column(name = "VILLE", length = 50, nullable = false)
 	private String ville ;
 
+	
+	
 	public int getNumero() {
 		return numero;
 	}
