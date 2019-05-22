@@ -18,6 +18,7 @@ import fr.banque.model.Client;
 import fr.banque.model.Compte;
 import fr.banque.model.LivretA;
 import fr.banque.model.Operation;
+import fr.banque.model.Virement;
 import fr.biblioteque.model.Livre;
 
 public class banqueApp {
@@ -153,6 +154,29 @@ public class banqueApp {
 				+ compte1.getTaux() + "   Date de fin : " + compte1.getDateFin());
 		System.out.println("compte numero : "+ compte2.getNumero() + "   Solde : " + compte2.getSolde() + "  Taux : " 
 				+ compte2.getTaux());
+		
+		Virement v1 = new Virement();
+		v1.setDate(LocalDate.parse("2018-04-04"));
+		v1.setMontant(1000);
+		v1.setMotif("Cadeau");
+		v1.setBeneficiaire("Bilel");
+		v1.setCompte(c2);
+		em.persist(v1);/*
+		Virement v2 = new Virement();
+		v2.setDate(LocalDate.parse("2018-09-04"));
+		v2.setMontant(2000);
+		v2.setMotif("Rembourssement");
+		v2.setBeneficiaire("Manel");
+		v2.setCompte(c2);
+		em.persist(v2);
+		Virement v3 = new Virement();
+		v3.setDate(LocalDate.parse("2019-05-19"));
+		v3.setMontant(1650.50);
+		v3.setMotif("Gentillesse");
+		v3.setBeneficiaire("Krimo");
+		v3.setCompte(c2);
+		em.persist(v3);*/
+		
 		
 		
 		
