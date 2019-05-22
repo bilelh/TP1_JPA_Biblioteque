@@ -31,6 +31,9 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<class>fr.banque.model.Client</class>
 		<class>fr.banque.model.Compte</class>
 		<class>fr.banque.model.Operation</class>
+		<class>fr.banque.model.AssuranceVie</class>
+		<class>fr.banque.model.LivretA</class>
+		<class>fr.banque.model.Virement</class>
 		<properties>
 		
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

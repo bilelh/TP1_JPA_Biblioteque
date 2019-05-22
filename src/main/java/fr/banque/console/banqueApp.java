@@ -10,10 +10,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+
 import fr.banque.model.Adresse;
+import fr.banque.model.AssuranceVie;
 import fr.banque.model.Banque;
 import fr.banque.model.Client;
 import fr.banque.model.Compte;
+import fr.banque.model.LivretA;
 import fr.banque.model.Operation;
 import fr.biblioteque.model.Livre;
 
@@ -105,6 +108,7 @@ public class banqueApp {
 		query.setParameter("num", "00002");
 		Compte compte = (Compte) query.getSingleResult();
 		
+		// AFFICHAGE DES CLIENTS POSSEDANT LE MEME COMPTE 00002
 		Set <Client> clientsDuCompte = compte.getClients();
 		System.out.println();
 		System.out.println("Clients Du Compte :" + compte.getNumero());
@@ -112,6 +116,43 @@ public class banqueApp {
 			
 			System.out.println("Prénom : "+ c.getPrenom() + "   Nom : " + c.getNom());
 		}
+		System.out.println();
+		
+				// Client 4 qui possedera 2 compte (livret A et assurance vie)
+		Client cl4 = new Client() ;
+		cl4.setNom("Lothbrok");
+		cl4.setPrenom("Ragnar");
+		cl4.setDateNaissance(LocalDate.parse("1975-01-21"));
+		cl4.setAdresse(a2);
+		cl4.setBanque(b1);
+		em.persist(cl4);
+				// Creation du compte 3 (AssuranceVie)
+		AssuranceVie c3 = new AssuranceVie();
+		c3.setNumero("00003");
+		c3.setSolde(5624);
+		c3.setDateFin(LocalDate.parse("2032-02-07"));
+		c3.setTaux(0.45);
+		Set<Client> clients3 = new HashSet <Client>() ;
+		c3.setClients(clients3);
+		em.persist(c3);
+				// Creation du compte 4 (LivretA)
+		LivretA c4 = new LivretA();
+		c4.setNumero("00004");
+		c4.setSolde(18542.30);
+		c4.setTaux(0.85);
+		c4.setClients(clients3);
+		em.persist(c4);
+		
+		AssuranceVie compte1 = (AssuranceVie) em.find(Compte.class, 3);
+		LivretA compte2 = (LivretA) em.find(Compte.class, 4);
+		
+				// Affichage des comptes du client
+		System.out.println();
+		System.out.println("Comptes du client :" + cl4.getPrenom() + "  " + cl4.getNom());
+		System.out.println("compte numero : "+ compte1.getNumero() + "   Solde : " + compte1.getSolde() + "  Taux : " 
+				+ compte1.getTaux() + "   Date de fin : " + compte1.getDateFin());
+		System.out.println("compte numero : "+ compte2.getNumero() + "   Solde : " + compte2.getSolde() + "  Taux : " 
+				+ compte2.getTaux());
 		
 		
 		
