@@ -42,6 +42,11 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 				value="com.mysql.jdbc.Driver" />
 				
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			
+			<!-- desactiver l'autodetection des classes de type @Entity -->
+			<property name="hibernate.archive.autodetection" value="" />
+			<!-- Activation de la génération des tables manquantes uniquement -->
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 	
 		</properties>
 	</persistence-unit>
