@@ -1,6 +1,6 @@
 package fr.banque.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Operation {
 	private int id ;
 	
 	@Column(name = "DATE", nullable = false)
-	private LocalDateTime date ;
+	private LocalDate date ;
 	
 	@Column(name = "MONTANT", nullable = false)
 	private double montant ;
@@ -42,11 +42,11 @@ public class Operation {
 		this.id = id;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

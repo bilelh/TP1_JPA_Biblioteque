@@ -24,20 +24,20 @@ public class Client {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	
-	@Column(name = "NOM", length = 50, nullable = false, unique = false)
+	@Column(name = "NOM_CLIENT", length = 50, nullable = false, unique = false)
 	private String nom ;
 	
 	@Column(name = "PRENOM", length = 50, nullable = false, unique = false)
 	private String prenom ;
 	
-	@Column(name = "NOM", nullable = false)
+	@Column(name = "DATE_NAISSANCE", nullable = false)
 	private LocalDate dateNaissance ;
 	
 	@Embedded
 	private Adresse adresse ;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "ID_BANQUE" , referencedColumnName="ID")
 	private Banque banque ;
 	
 	@ManyToMany
@@ -107,6 +107,4 @@ public class Client {
 		this.comptes = comptes;
 	}
 	
-	
-
 }
