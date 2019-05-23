@@ -156,6 +156,22 @@ public class banqueApp {
 		v3.setCompte(c2);
 		em.persist(v3);
 		
+		// Ajout d'operations de type Operation sur un compte
+		Operation o1 = new Operation() ;
+		o1.setDate(LocalDate.parse("2019-04-04"));
+		o1.setMontant(15.40);
+		o1.setMotif("Restaurant");
+		o1.setCompte(c1);
+		em.persist(o1);
+		
+		Operation o2 = new Operation() ;
+		o2.setDate(LocalDate.parse("2019-04-25"));
+		o2.setMontant(-4000);
+		o2.setMotif("voiture");
+		o2.setCompte(c1);
+		em.persist(o2);
+		
+		
 		
 		
 		
