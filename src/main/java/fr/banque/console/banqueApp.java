@@ -34,6 +34,7 @@ public class banqueApp {
 		
 		et.begin();
 		
+		
 		Adresse a1 = new Adresse () ;
 		a1.setNumero(10);
 		a1.setRue("Rue Flandin");
@@ -60,12 +61,12 @@ public class banqueApp {
 		c1.setClients(clients);
 		em.persist(c1);
 		
-		Operation o1 = new Operation() ;
+		/*Operation o1 = new Operation() ;
 		o1.setDate(LocalDate.parse("2019-04-04"));
 		o1.setMontant(15.40);
 		o1.setMotif("Restaurant");
 		o1.setCompte(c1);
-		em.persist(o1);
+		em.persist(o1);*/
 		
 		//et.commit();
 		//em.close();
@@ -105,19 +106,6 @@ public class banqueApp {
 		c2.setClients(clients2);
 		em.persist(c2);
 		
-		Query query = em.createQuery("SELECT c FROM Compte c WHERE c.numero= :num");
-		query.setParameter("num", "00002");
-		Compte compte = (Compte) query.getSingleResult();
-		
-		// AFFICHAGE DES CLIENTS POSSEDANT LE MEME COMPTE 00002
-		Set <Client> clientsDuCompte = compte.getClients();
-		System.out.println();
-		System.out.println("Clients Du Compte :" + compte.getNumero());
-		for (Client c : clientsDuCompte) {
-			
-			System.out.println("Prénom : "+ c.getPrenom() + "   Nom : " + c.getNom());
-		}
-		System.out.println();
 		
 				// Client 4 qui possedera 2 compte (livret A et assurance vie)
 		Client cl4 = new Client() ;
@@ -144,16 +132,7 @@ public class banqueApp {
 		c4.setClients(clients3);
 		em.persist(c4);
 		
-		AssuranceVie compte1 = (AssuranceVie) em.find(Compte.class, 3);
-		LivretA compte2 = (LivretA) em.find(Compte.class, 4);
 		
-				// Affichage des comptes du client
-		System.out.println();
-		System.out.println("Comptes du client :" + cl4.getPrenom() + "  " + cl4.getNom());
-		System.out.println("compte numero : "+ compte1.getNumero() + "   Solde : " + compte1.getSolde() + "  Taux : " 
-				+ compte1.getTaux() + "   Date de fin : " + compte1.getDateFin());
-		System.out.println("compte numero : "+ compte2.getNumero() + "   Solde : " + compte2.getSolde() + "  Taux : " 
-				+ compte2.getTaux());
 		
 		Virement v1 = new Virement();
 		v1.setDate(LocalDate.parse("2018-04-04"));
@@ -161,7 +140,7 @@ public class banqueApp {
 		v1.setMotif("Cadeau");
 		v1.setBeneficiaire("Bilel");
 		v1.setCompte(c2);
-		em.persist(v1);/*
+		em.persist(v1);
 		Virement v2 = new Virement();
 		v2.setDate(LocalDate.parse("2018-09-04"));
 		v2.setMontant(2000);
@@ -175,13 +154,41 @@ public class banqueApp {
 		v3.setMotif("Gentillesse");
 		v3.setBeneficiaire("Krimo");
 		v3.setCompte(c2);
-		em.persist(v3);*/
+		em.persist(v3);
 		
 		
 		
 		
 		
 		et.commit();
+		
+		
+		AssuranceVie compte1 = (AssuranceVie) em.find(Compte.class, 3);
+		LivretA compte2 = (LivretA) em.find(Compte.class, 4);
+		
+				// Affichage des comptes du client
+		System.out.println();
+		System.out.println("Comptes du client :" + cl4.getPrenom() + "  " + cl4.getNom());
+		System.out.println("compte numero : "+ compte1.getNumero() + "   Solde : " + compte1.getSolde() + "  Taux : " 
+				+ compte1.getTaux() + "   Date de fin : " + compte1.getDateFin());
+		System.out.println("compte numero : "+ compte2.getNumero() + "   Solde : " + compte2.getSolde() + "  Taux : " 
+				+ compte2.getTaux());
+		
+		Query query = em.createQuery("SELECT c FROM Compte c WHERE c.numero= :num");
+		query.setParameter("num", "00002");
+		Compte compte = (Compte) query.getSingleResult();
+		
+		// AFFICHAGE DES CLIENTS POSSEDANT LE MEME COMPTE 00002
+		Set <Client> clientsDuCompte = compte.getClients();
+		System.out.println();
+		System.out.println("Clients Du Compte :" + compte.getNumero());
+		for (Client c : clientsDuCompte) {
+			
+			System.out.println("Prénom : "+ c.getPrenom() + "   Nom : " + c.getNom());
+		}
+		System.out.println();
+		
+		
 		em.close();
 
 	}

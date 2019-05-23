@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table (name="operation")
-public class Operation {
+public abstract class Operation {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Operation {
 	private String motif ;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "ID_COMPTE")
 	private Compte compte ;
 	
 	
